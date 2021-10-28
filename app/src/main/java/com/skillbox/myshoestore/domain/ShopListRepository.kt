@@ -1,11 +1,11 @@
 package com.skillbox.myshoestore.domain
 
 interface ShopListRepository {
-    fun addShopList(shopItem: ShopItem)
+    fun addShopItem(shopItem: ShopItem)
 
-    fun deleteShopList(shopItem: ShopItem)
+    fun deleteShopItem(shopItem: ShopItem)
 
-    fun editShopList(shopItem: ShopItem)
+    fun editShopItem(shopItem: ShopItem)
 
     fun getItemFromId(shopItemId: Long): ShopItem
 
