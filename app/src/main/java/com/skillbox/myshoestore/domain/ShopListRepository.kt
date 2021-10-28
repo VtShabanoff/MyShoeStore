@@ -1,5 +1,7 @@
 package com.skillbox.myshoestore.domain
 
+import androidx.lifecycle.LiveData
+
 interface ShopListRepository {
     fun addShopItem(shopItem: ShopItem)
 
@@ -9,5 +11,5 @@ interface ShopListRepository {
 
     fun getItemFromId(shopItemId: Long): ShopItem
 
-    fun getShopList(): List<ShopItem>
+    fun getShopList(): LiveData<List<ShopItem>>
 }

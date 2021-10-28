@@ -1,10 +1,13 @@
 package com.skillbox.myshoestore.data
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.skillbox.myshoestore.domain.ShopItem
 import com.skillbox.myshoestore.domain.ShopListRepository
 
 object ShopListRepositoryImpl: ShopListRepository {
 
+    private val shopListLD = MutableLiveData<List<ShopItem>>()
     private val shopList = mutableListOf<ShopItem>()
 
     private var autoIncrementId: Long = 0
@@ -21,10 +24,12 @@ object ShopListRepositoryImpl: ShopListRepository {
             shopItem.id = autoIncrementId++
         }
         shopList.add(shopItem)
+        updateListShopItem()
     }
 
     override fun deleteShopItem(shopItem: ShopItem) {
         shopList.remove(shopItem)
+        updateListShopItem()
     }
 
     override fun editShopItem(shopItem: ShopItem) {
@@ -39,7 +44,11 @@ object ShopListRepositoryImpl: ShopListRepository {
         } ?: throw RuntimeException("Element with id $shopItemId is not found")
     }
 
-    override fun getShopList(): List<ShopItem> {
-        return shopList.toMutableList()
+    override fun getShopList(): LiveData<List<ShopItem>> {
+        return shopListLD
+    }
+
+    private fun updateListShopItem(){
+        shopListLD.postValue(shopList.toList())
     }
 }
