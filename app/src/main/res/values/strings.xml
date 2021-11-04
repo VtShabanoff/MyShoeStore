@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyShoeStore</string>
+    <string name="click_to_button">"Add shop item "</string>
 </resources>
