@@ -1,12 +1,13 @@
 package com.skillbox.myshoestore.presentation
 
+
 import androidx.recyclerview.widget.DiffUtil
 import com.skillbox.myshoestore.domain.ShopItem
 
 class ShopListDiffCallback(
     private val oldList: List<ShopItem>,
     private val newList: List<ShopItem>,
-): DiffUtil.Callback() {
+):DiffUtil.Callback() {
     override fun getOldListSize() = oldList.size
 
     override fun getNewListSize() = newList.size

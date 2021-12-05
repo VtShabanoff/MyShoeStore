@@ -1,11 +1,13 @@
 package com.skillbox.myshoestore.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.skillbox.myshoestore.R
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.shopListLD.observe(this) {
             shopListAdapter.submitList(it)
+        }
+        val addShopItemButton =
+            findViewById<FloatingActionButton>(R.id.addShopItemButton)
+        addShopItemButton.setOnClickListener {
+            val intent = ShopItemActivity.newIntentAddShopItem(this)
+            startActivity(intent)
         }
     }
 
@@ -62,7 +70,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClick = {
-            toast("this item name ${it.name}, id = ${it.id}")
+            val intent = ShopItemActivity.newIntentEditShopItem(this, it.id)
+            startActivity(intent)
         }
     }
 

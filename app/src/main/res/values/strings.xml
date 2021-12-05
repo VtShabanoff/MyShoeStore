@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MyShoeStore</string>
     <string name="click_to_button">"Add shop item "</string>
+    <string name="til_name">Name</string>
+    <string name="til_count">Count</string>
+    <string name="button_save">save</string>
+    <string name="error_input_name">error input name</string>
+    <string name="error_input_count">error input count</string>
 </resources>
